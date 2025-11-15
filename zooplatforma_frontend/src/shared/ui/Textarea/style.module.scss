@@ -1,0 +1,45 @@
+.texrtareaGroup {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 8px;
+}
+
+.textareaLlabel {
+  font-family: var(--font-family-sans);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semi-bold);
+  line-height: 16px;
+  letter-spacing: -1%;
+  text-align: left;
+}
+
+.taxtareaField {
+  padding: 12px;
+  border: 2px solid var(--color-border);
+  border-radius: 6px;
+  background: var(--color-neutral);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-regular);
+  line-height: 150%;
+  letter-spacing: -1%;
+  text-align: left;
+  min-height: 136px;
+}
+
+.taxtareaField:focus {
+  outline: none;
+}
+
+.error {
+  border-color: var(--color-attention);
+}
+
+.invalidFeedback {
+  color: var(--color-attention);
+  font-size: var(--font-size-xs);
+  margin-top: 4px;
+}

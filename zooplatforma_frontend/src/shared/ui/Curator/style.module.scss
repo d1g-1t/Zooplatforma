@@ -1,0 +1,40 @@
+.container {
+  max-width: 238px;
+  width: 100%;
+  border-radius: 10px;
+  padding: 25px 30px;
+  display: flex;
+  gap: 21px;
+  outline: 1px solid #edf0f7;
+  justify-content: space-between;
+}
+
+.containerImage {
+  height: 63px;
+  width: 63px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 10px;
+  background-clip: padding-box;
+  outline: 1px solid #edf0f7;
+}
+.containerLink {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: start;
+  font-family: 'Inter';
+  font-style: normal;
+}
+.name {
+  margin: 0;
+  font-weight: 600;
+  line-height: 150%;
+  color: #000000;
+}
+.linkCurator {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+}

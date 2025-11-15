@@ -1,0 +1,38 @@
+@import '../../../app/styles/variables.scss';
+@import '../../../shared/assets/fonts/fonts.scss';
+
+.Card {
+  list-style: none;
+  border: 2px solid var(--color-border);
+  border-radius: 10px;
+  background: --color-neutral;
+}
+.Link {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 25px;
+  min-height: 158px;
+  text-decoration: none;
+  transition: opacity 0.2s ease-in-out;
+}
+.Link:hover {
+  opacity: 0.5;
+}
+.Counter {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-l);
+  line-height: 150%;
+}
+.Text {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-xs);
+  line-height: 150%;
+  opacity: 50%;
+}

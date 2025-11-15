@@ -1,0 +1,19 @@
+@import '../../../app/styles/variables';
+
+.appLink {
+  color: var(--color-main);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: 150%;
+  letter-spacing: 0%;
+  text-align: center;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.custom-class {
+  color: var(--color-accent-red);
+}

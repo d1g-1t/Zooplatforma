@@ -1,0 +1,101 @@
+@import '../../../../src/app/styles/_variables';
+
+.VaccinationInput {
+  margin: 0;
+  padding: 0 20px;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #cbd2e0;
+  border-radius: 6px;
+}
+
+.VaccinationData {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  column-gap: 4px;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-regular);
+}
+
+.VaccinationType {
+  font-weight: var(--font-weight-bold);
+}
+
+.ControlsSection {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  column-gap: 20px;
+}
+
+.EditButton {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  width: 13px;
+  height: 13px;
+  background-image: url('../../../shared/assets/icons/icon_pen.svg');
+  background-repeat: no-repeat;
+  background-size: 13px 13px;
+  background-position: center;
+  transition: 0.2ms opacity;
+
+  &:hover {
+    opacity: 50%;
+    transition: 0.2ms opacity;
+  }
+}
+
+.DeleteButton {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  width: 11px;
+  height: 14px;
+  background-image: url('../../../shared/assets/icons/icon_trash.svg');
+  background-repeat: no-repeat;
+  background-size: 11px 14px;
+  background-position: center;
+  transition: 0.2ms opacity;
+
+  &:hover {
+    opacity: 50%;
+    transition: 0.2ms opacity;
+  }
+}
+
+.VerificationButton {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  background-position: center;
+  transition: 0.2ms opacity;
+
+  &:hover {
+    opacity: 50%;
+    transition: 0.2ms opacity;
+  }
+}
+
+.VerificationButtonVerified {
+  background-image: url('../../../shared/assets/icons/info_success.svg');
+}
+
+.VerificationButtonUnverified {
+  background-image: url('../../../shared/assets/icons/icon_info.svg');
+}

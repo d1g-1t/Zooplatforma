@@ -1,0 +1,17 @@
+.layoutWrapper {
+  display: flex;
+  max-width: 1440px;
+  align-items: flex-start;
+  margin: 0 auto;
+  max-height: 100vh;
+}
+
+.layoutContainer {
+  width: 100%;
+}
+
+.pageWrapper {
+  width: 100%;
+  height: calc(100vh - 71px);
+  overflow-y: scroll;
+}

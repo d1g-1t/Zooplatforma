@@ -1,0 +1,70 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 50px;
+}
+.tag {
+  height: 30px;
+  margin-bottom: 10px;
+}
+.typeOfAd {
+  width: max-content;
+  padding: 8px;
+  border-radius: 8px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.fundraising {
+  background-color: rgba(255, 67, 67, 0.05);
+  color: #ff4343;
+}
+.lookingForHome {
+  background-color: rgba(42, 182, 140, 0.05);
+  color: #2ab68c;
+}
+.missing {
+  background-color: rgba(255, 119, 21, 0.05);
+  color: #ff7715;
+}
+.title {
+  text-align: left;
+  margin: 0;
+}
+.container {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  grid-template-columns: max-content max-content;
+  grid-template-areas:
+    'header header'
+    'main actions'
+    'ads ads'
+    'ads ads';
+  column-gap: 70px;
+  justify-content: center;
+}
+.gridHeader {
+  grid-area: header;
+  margin-bottom: 44px;
+}
+.gridContent {
+  grid-area: main;
+}
+.gridActions {
+  grid-area: actions;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.gridAds {
+  grid-area: ads;
+}
+.containersGap {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.comments {
+  max-width: 716px;
+  margin-bottom: 150px;
+}

@@ -1,0 +1,78 @@
+@import '../../../app/styles/_variables.scss';
+
+.button {
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 12px 20px;
+  font-family: var(--font-family-sans);
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border 0.3s ease;
+  font-weight: var(--font-weight-medium);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &.primary {
+    background-color: var(--color-main);
+    color: var(--color-neutral);
+  }
+
+  &.grey-text {
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    outline: 1px solid var(--color-border);
+  }
+
+  &.accent-orange {
+    background-color: var(--color-accent-orange);
+    color: var(--color-neutral);
+  }
+
+  &.accent-green {
+    background-color: var(--color-accent-green);
+    color: var(--color-neutral);
+  }
+
+  &.attention {
+    background-color: var(--color-attention);
+    color: var(--color-neutral);
+  }
+
+  &.outline-blue {
+    background-color: var(--color-neutral);
+    color: var(--color-main);
+    outline: 2px solid var(--color-main);
+  }
+
+  &.outline-red {
+    background-color: var(--color-neutral);
+    color: var(--color-attention);
+    outline: 2px solid var(--color-attention);
+  }
+
+  &.none-border {
+    border: none;
+    background-color: var(--color-background);
+    color: rgba(0, 0, 0, 0.5);
+    margin-right: 25px;
+  }
+
+  &.bg-grey {
+    background-color: rgba(237, 240, 247, 0.5);
+    font-weight: var(--font-weight-semi-bold);
+    font-size: var(--font-size-xs);
+    line-height: 150%;
+    color: var(--color-main);
+    width: 100%;
+    padding: 12px 0;
+  }
+
+  &:disabled {
+    background-color: var(--color-border);
+    color: var(--color-text-secondary);
+    cursor: not-allowed;
+  }
+}

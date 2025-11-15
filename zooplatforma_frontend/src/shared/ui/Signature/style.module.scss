@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+}
+
+.userName {
+  font-weight: var(--font-weight-semi-bold);
+  font-size: var(--font-size-s);
+}
+
+.userRole {
+  font-size: var(--font-size-s);
+  color: var(--color-main);
+  border-radius: 8px;
+  padding: 5px 5px;
+  background: rgba(60, 140, 255, 0.1);
+}

@@ -1,0 +1,128 @@
+@import '../../../src/app/styles/_variables';
+
+.NewPetForm {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.FormMain {
+  margin: 0;
+  padding: 70px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.FormInputs {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-width: 350px;
+}
+
+.FormPhoto {
+  margin: 0;
+  padding: 0;
+}
+
+.StatusArea {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 50px;
+  border-bottom: 1px solid #edf0f7;
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
+}
+
+.PassportArea {
+  margin: 0;
+  padding: 50px 0;
+  border-bottom: 1px solid #edf0f7;
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
+}
+
+.MarkingArea {
+  margin: 0;
+  padding: 50px 0;
+  border-bottom: 1px solid #edf0f7;
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
+}
+
+.MedicalCardArea {
+  margin: 0;
+  padding: 0;
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
+}
+
+.TitleSection {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+
+.Title {
+  margin: 0;
+  padding: 0;
+  color: var(--color-text-primary);
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-s);
+  line-height: 0.75em;
+}
+
+.Hint {
+  margin: 0;
+  padding: 0;
+  color: rgba(45, 54, 72, 50%);
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-xs);
+  line-height: 0.72em;
+}
+
+.InputsHorizontal {
+  display: flex;
+  flex-direction: row;
+  column-gap: 20px;
+}
+
+.MarkingContainer {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+
+.MarkingVerification {
+  position: absolute;
+  right: 9px;
+  top: 34px;
+}
+
+.MarkingsVertical {
+  margin: 0 0 20px 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  list-style-type: none;
+}
+
+.MarkingsListItem {
+  margin: 0;
+  padding: 0;
+}

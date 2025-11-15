@@ -1,0 +1,64 @@
+@import '../../../../src/app/styles/_variables';
+
+.Checkbox {
+  margin: 0;
+  padding: 0;
+}
+
+.CheckboxLabel {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 12px;
+  height: 24px;
+}
+
+.CheckboxElement {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #cbd2e0;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+
+  &:checked {
+    background-color: var(--color-main);
+    border: none;
+    position: relative;
+  }
+
+  &:checked::before {
+    background-image: url('../../../shared/assets/icons/icon_checkmark.svg');
+    background-repeat: no-repeat;
+    background-size: 13px 9px;
+    background-position: center;
+    content: '';
+    width: 20px;
+    height: 20px;
+    position: absolute;
+  }
+
+  &:disabled {
+    border-color: #c0c0c0;
+    background-color: #c0c0c0;
+  }
+
+  &:disabled + p {
+    color: var(--color-text-primary-light);
+  }
+}
+
+.Title {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-regular);
+}

@@ -1,0 +1,14 @@
+@import '../../app/styles/variables';
+@import '../../shared/assets/fonts/fonts';
+
+.footer {
+  padding: 30px 70px;
+}
+
+.copyright {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: rgba(45, 54, 72, 0.5);
+  margin: 0;
+}

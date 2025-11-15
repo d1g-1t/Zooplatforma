@@ -1,0 +1,23 @@
+# Исключаем виртуальные окружения
+.venv
+venv
+
+# Исключаем файлы и каталоги, которые не нужны для сборки
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite3
+*.log
+*.pot
+*.mo
+*.swp
+*.swo
+*.DS_Store
+*.coverage
+*.egg-info
+*.eggs
+*.idea
+*.vscode
+node_modules

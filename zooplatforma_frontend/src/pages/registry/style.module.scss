@@ -1,0 +1,31 @@
+.registryWrapper {
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 40px 0 0;
+  align-items: center;
+}
+
+.titleButtons {
+  display: flex;
+  gap: 15px;
+  height: 38px;
+}
+
+.table {
+  max-width: 1140px;
+}
+
+.pagination {
+  margin: 50px 0;
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+}

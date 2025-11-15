@@ -1,0 +1,26 @@
+@import '../../app/styles/variables';
+
+.mainWrapper {
+  padding: 70px 70px 0 70px;
+}
+
+.line {
+  border: 1px solid rgba(237, 240, 247, 1);
+  margin: 0;
+  &__with_t_m {
+    margin-top: 70px;
+  }
+
+  &__with_b_m {
+    margin-bottom: 70px;
+  }
+
+  &__with_both_m {
+    margin-bottom: 70px;
+    margin-top: 70px;
+  }
+}
+
+.container {
+  padding: 90px 0;
+}
