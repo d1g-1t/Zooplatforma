@@ -21,3 +21,12 @@ coverage/
 *.swp
 *.swo
 *~
+*.sqlite3
+*.db
+.pytest_cache/
+htmlcov/
+.coverage
+.tox/
+venv/
+env/
+ENV/

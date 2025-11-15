@@ -1,4 +1,4 @@
-.PHONY: build up down logs restart demo frontend-shell backend-shell ensure-env test-stack
+.PHONY: build up down logs restart demo frontend-shell backend-shell ensure-env test-stack clean init migrate setup status
 
 COMPOSE_FILE=docker-compose.yml
 BACKEND_ENV_FILE=zooplatforma_backend/.env
@@ -7,17 +7,88 @@ BACKEND_ENV_TEMPLATE=zooplatforma_backend/.env.example
 ensure-env:
 	@if [ ! -f $(BACKEND_ENV_FILE) ]; then \
 		cp $(BACKEND_ENV_TEMPLATE) $(BACKEND_ENV_FILE); \
-		echo "Created $(BACKEND_ENV_FILE) from template"; \
+		echo "✓ Created $(BACKEND_ENV_FILE) from template"; \
 	fi
 
+clean:
+	@echo "Stopping and removing all containers..."
+	@docker compose -f $(COMPOSE_FILE) down --remove-orphans --volumes || true
+	@docker ps -a --format '{{.Names}}' | grep -E '^zooplatforma' | xargs -r docker rm -f || true
+	@echo "✓ Cleanup completed"
+
 build: ensure-env
-	docker compose -f $(COMPOSE_FILE) build
+	@echo "Building Docker images..."
+	@docker compose -f $(COMPOSE_FILE) build
+	@echo "✓ Build completed"
+
+migrate:
+	@echo "Running database migrations..."
+	docker compose -f $(COMPOSE_FILE) exec backend python manage.py migrate
+	@echo "✓ Migrations completed"
+
+setup: clean ensure-env
+	@echo "========================================="
+	@echo " Zooplatforma - First Time Setup"
+	@echo "========================================="
+	@echo ""
+	@echo "[1/6] Building Docker images..."
+	@docker compose -f $(COMPOSE_FILE) build --quiet
+	@echo "✓ Images built successfully"
+	@echo ""
+	@echo "[2/6] Starting database and cache..."
+	@docker compose -f $(COMPOSE_FILE) up -d db redis
+	@echo "✓ Database and cache started"
+	@echo ""
+	@echo "[3/6] Waiting for services to be healthy..."
+	@sleep 10
+	@docker compose -f $(COMPOSE_FILE) exec -T db pg_isready -U zoo_user -d zoo_project > /dev/null 2>&1 || sleep 5
+	@echo "✓ Services are healthy"
+	@echo ""
+	@echo "[4/6] Starting backend and celery..."
+	@docker compose -f $(COMPOSE_FILE) up -d backend celery
+	@echo "✓ Backend and celery started"
+	@echo ""
+	@echo "[5/6] Waiting for backend initialization..."
+	@sleep 25
+	@echo "✓ Backend initialized"
+	@echo ""
+	@echo "[6/6] Starting frontend..."
+	@docker compose -f $(COMPOSE_FILE) up -d frontend
+	@sleep 5
+	@echo "✓ Frontend started"
+	@echo ""
+	@echo "========================================="
+	@echo " ✓ Setup completed successfully!"
+	@echo "========================================="
+	@echo ""
+	@echo "Services are available at:"
+	@echo "  🌐 Frontend:     http://localhost:8080"
+	@echo "  🔌 Backend API:  http://localhost:8000/api/v1/"
+	@echo "  👤 Admin Panel:  http://localhost:8000/admin"
+	@echo ""
+	@echo "Default credentials:"
+	@echo "  📧 Email:    admin@admin.ru"
+	@echo "  🔑 Password: admin777"
+	@echo ""
+	@echo "Useful commands:"
+	@echo "  make logs    - View all logs"
+	@echo "  make status  - Check service status"
+	@echo "  make down    - Stop all services"
+	@echo ""
+
+init: setup
 
 up: ensure-env
-	docker compose -f $(COMPOSE_FILE) up -d
+	@echo "Starting all services..."
+	@docker compose -f $(COMPOSE_FILE) up -d
+	@echo "✓ All services started"
+	@echo ""
+	@echo "Run 'make status' to check service status"
 
 down:
-	docker compose -f $(COMPOSE_FILE) down --remove-orphans
+	@echo "Stopping all services..."
+	@docker compose -f $(COMPOSE_FILE) down --remove-orphans
+	@echo "✓ All services stopped"
 
 logs:
 	docker compose -f $(COMPOSE_FILE) logs -f
@@ -48,3 +119,8 @@ backend-shell: ensure-env
 
 frontend-shell: ensure-env
 	docker compose -f $(COMPOSE_FILE) exec frontend sh
+
+status:
+	@echo "=== Service Status ==="
+	@docker compose -f $(COMPOSE_FILE) ps
+	@echo ""
