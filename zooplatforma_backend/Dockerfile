@@ -18,10 +18,9 @@ COPY . .
 
 RUN addgroup --system app && adduser --system --ingroup app app \
     && mkdir -p /app/static /app/media /app/logs \
+    && chmod +x /app/entrypoint.sh \
     && chown -R app:app /app
 
 USER app
 
-COPY --chmod=755 entrypoint.sh /entrypoint.sh
-
-CMD ["/entrypoint.sh"]
+CMD ["/app/entrypoint.sh"]
