@@ -1,0 +1,39 @@
+@import '../../../../src/app/styles/_variables';
+
+.FormHeader {
+  margin: 0;
+  padding: 16px 40px;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 70px;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.Title {
+  margin: 0;
+  padding: 0;
+  color: var(--color-text-primary);
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-m);
+  width: 100%;
+}
+
+.Buttons {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-semi-bold);
+  font-size: var(--font-size-xs);
+  display: flex;
+  flex-direction: row;
+  column-gap: 15px;
+}
+
+.SubmitButton {
+  width: 160px;
+}

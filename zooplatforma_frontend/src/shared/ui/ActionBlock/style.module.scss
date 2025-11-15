@@ -1,0 +1,39 @@
+.container {
+  max-width: 238px;
+  width: 100%;
+  border-radius: 10px;
+  padding: 40px 30px 30px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  outline: 1px solid #edf0f7;
+}
+.containerAmount {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.containerAmount h2,
+.containerAmount h3 {
+  margin: 0;
+  text-align: start;
+}
+.progress {
+  background-color: #edf0f7;
+  height: 8px;
+}
+.progressFill {
+  background-color: #ff4343;
+}
+.buttons {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.actionButton {
+  height: 48px;
+}
+.bold {
+  font-weight: 600;
+}

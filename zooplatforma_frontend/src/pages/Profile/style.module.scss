@@ -1,0 +1,95 @@
+@import '../../../src/app/styles/_variables';
+
+.Wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 70px 70px 0;
+}
+
+.ProfileInfo {
+  margin-bottom: 50px;
+  border: 1px solid var(--color-border);
+  padding: 40px;
+  font-family: var(--font-family-sans);
+  border-radius: 10px;
+}
+
+.ProfileTitle {
+  font-family: inherit;
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-m);
+  margin-bottom: 20px;
+}
+
+.ProfileDescription {
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-s);
+  margin-bottom: 40px;
+}
+
+.Achievements {
+  display: flex;
+}
+
+.AchievementsSection {
+  padding: 6px 30px;
+  border-right: 1px solid var(--color-border);
+}
+
+.AchievementsSection:first-child {
+  padding: 6px 30px 6px 0;
+}
+
+.AchievementsTitle {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-semi-bold);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.AchievementsNumber {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-xl);
+  margin: 0;
+}
+
+.Section {
+  margin-bottom: 50px;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 50px;
+}
+
+.UserInfoMain {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-xs);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.UserName {
+  font-family: inherit;
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-bold);
+  margin: 30px 0 15px;
+}
+
+.UserStatus {
+  margin-bottom: 30px;
+}
+
+.UserContacts {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.UserContactsSection {
+  display: flex;
+  gap: 12px;
+}
+
+.UserContact {
+  margin: 0;
+}

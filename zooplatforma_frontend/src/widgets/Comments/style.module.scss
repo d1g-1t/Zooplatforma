@@ -1,0 +1,80 @@
+@import '../../app/styles/variables';
+@import '../../shared/assets/fonts/fonts';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  margin: 0;
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-m);
+  line-height: 130%;
+  color: #2d3648;
+}
+
+.number {
+  color: var(--color-text-secondary-light);
+}
+
+.selectWrapper {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  min-width: 125px;
+  height: 26px;
+  color: var(--color-main);
+}
+
+.select {
+  border: none;
+  appearance: none;
+  padding: 0 0 0 19px;
+  width: 100%;
+  color: inherit;
+  background-color: white;
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-xs);
+  line-height: 150%;
+  cursor: pointer;
+}
+
+.selectIconWrapper {
+  width: 19px;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.input {
+  margin: 20px 0 20px 0;
+  input {
+    padding: 24px;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+  }
+
+  input::placeholder {
+    color: var(--color-text-secondary-light);
+  }
+}
+
+.items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.buttonMore {
+  svg {
+    margin-right: 7px;
+  }
+}

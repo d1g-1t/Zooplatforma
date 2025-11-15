@@ -1,0 +1,39 @@
+@import '../../../app/styles/variables';
+
+.breadcrumbs {
+  display: flex;
+  gap: 4px;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-xs);
+  line-height: 150%;
+  letter-spacing: -1%;
+  color: var(--color-text-secondary-light);
+  align-items: center;
+  padding: 0;
+}
+.linkWrapper {
+  list-style: none;
+}
+.link {
+  color: var(--color-text-secondary-dark);
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    color: var(--color-main);
+  }
+}
+
+.separator {
+  margin: 0 4px;
+  color: var(--color-text-secondary-light);
+}
+
+.active {
+  font-weight: 500;
+  color: rgb(45, 54, 72);
+  font-size: 14px;
+  list-style: none;
+}

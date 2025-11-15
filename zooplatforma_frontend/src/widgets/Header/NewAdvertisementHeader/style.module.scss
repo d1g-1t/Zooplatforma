@@ -1,0 +1,23 @@
+@import '../../../app/styles/_variables.scss';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 25px 16px 35px;
+  background-color: var(--color-neutral);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+}
+
+.actionsWrapper {
+  display: flex;
+  align-items: center;
+  column-gap: 15px;
+}
+
+.draftText {
+  color: var(--color-text-secondary-dark);
+  font-size: 14px;
+}

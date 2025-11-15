@@ -1,0 +1,102 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    env_file:
+      - .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - backend
+
+  redis:
+    image: redis:6
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      - backend
+
+  web:
+    image: ${DOCKERHUB_USERNAME}/zooplatforma_backend:latest
+    container_name: web
+    command: >
+      sh -c "python manage.py makemigrations &&
+             python manage.py migrate &&
+             python manage.py collectstatic --noinput &&
+             python manage.py create_superuser &&
+             gunicorn --bind 0.0.0.0:8000 config.wsgi:application"
+    volumes:
+      - static_volume:/code/static
+      - media_volume:/code/media
+    env_file:
+      - .env
+    depends_on:
+      - db
+    networks:
+      - backend
+    expose:
+      - "8000"
+
+  celery:
+    image: ${DOCKERHUB_USERNAME}/zooplatforma_backend:latest
+    container_name: celery
+    command: celery -A celery worker --loglevel=info
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - redis
+    networks:
+      - backend
+
+  frontend:
+    image: d1g1tsdocker/zooplatforma_frontend:latest
+    container_name: frontend
+    volumes:
+      - frontend_volume:/usr/share/nginx/html
+    command: >
+      sh -c "cp -r /app/build/* /usr/share/nginx/html/ && sleep infinity"
+    networks:
+      - backend
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /home/nginx.conf:/etc/nginx/nginx.conf:ro
+      - /home/certbot/conf:/etc/letsencrypt
+      - /home/certbot/www:/var/www/certbot
+      - static_volume:/code/static
+      - media_volume:/code/media
+      - frontend_volume:/usr/share/nginx/html
+    depends_on:
+      - web
+      - frontend
+    networks:
+      - backend
+    entrypoint: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - /home/certbot/conf:/etc/letsencrypt
+      - /home/certbot/www:/var/www/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+
+volumes:
+  postgres_data:
+  static_volume:
+  media_volume:
+  frontend_volume:
+
+networks:
+  backend:

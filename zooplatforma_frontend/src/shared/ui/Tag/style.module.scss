@@ -1,0 +1,23 @@
+.tag {
+  height: 30px;
+  margin-bottom: 10px;
+}
+.typeOfAd {
+  width: max-content;
+  padding: 8px;
+  border-radius: 8px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.fundraising {
+  background-color: rgba(255, 67, 67, 0.05);
+  color: #ff4343;
+}
+.lookingForHome {
+  background-color: rgba(42, 182, 140, 0.05);
+  color: #2ab68c;
+}
+.missing {
+  background-color: rgba(255, 119, 21, 0.05);
+  color: #ff7715;
+}

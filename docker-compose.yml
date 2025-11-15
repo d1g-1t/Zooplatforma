@@ -1,0 +1,96 @@
+services:
+  db:
+    image: postgres:15
+    restart: unless-stopped
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      - app
+    env_file:
+      - ./zooplatforma_backend/.env.example
+      - ./zooplatforma_backend/.env
+
+  redis:
+    image: redis:7
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      - app
+
+  backend:
+    build:
+      context: ./zooplatforma_backend
+      dockerfile: Dockerfile
+    env_file:
+      - ./zooplatforma_backend/.env.example
+      - ./zooplatforma_backend/.env
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      REDIS_URL: redis://redis:6379/1
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/0
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    volumes:
+      - static_volume:/app/static
+      - media_volume:/app/media
+    networks:
+      - app
+
+  celery:
+    build:
+      context: ./zooplatforma_backend
+      dockerfile: Dockerfile
+    command: celery -A config.celery worker --loglevel=info
+    env_file:
+      - ./zooplatforma_backend/.env.example
+      - ./zooplatforma_backend/.env
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      REDIS_URL: redis://redis:6379/1
+      CELERY_BROKER_URL: redis://redis:6379/0
+      CELERY_RESULT_BACKEND: redis://redis:6379/0
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - app
+
+  frontend:
+    build:
+      context: ./zooplatforma_frontend
+      dockerfile: Dockerfile
+      args:
+        - VITE_API_BASE_URL=http://backend:8000/api/v1
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    networks:
+      - app
+
+volumes:
+  postgres_data:
+  static_volume:
+  media_volume:
+
+networks:
+  app:

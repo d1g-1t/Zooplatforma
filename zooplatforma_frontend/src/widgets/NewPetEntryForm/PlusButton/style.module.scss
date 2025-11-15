@@ -1,0 +1,29 @@
+@import '../../../../src/app/styles/_variables';
+
+.PlusButton {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: row;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-xs);
+  color: var(--color-main);
+  font-weight: var(--font-weight-medium);
+  column-gap: 10px;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.1s opacity;
+  line-height: 0.72em;
+
+  &:hover {
+    opacity: 50%;
+    transition: 0.1s opacity;
+  }
+}
+
+.PlusIcon {
+  width: 10px;
+  height: 10px;
+}

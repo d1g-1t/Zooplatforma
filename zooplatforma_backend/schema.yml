@@ -1,0 +1,3776 @@
+openapi: 3.0.3
+info:
+  title: Зооплатформа
+  version: 1.0.0
+paths:
+  /api/v1/activation/{uid}/{token}/:
+    get:
+      operationId: api_v1_activation_retrieve
+      parameters:
+      - in: path
+        name: token
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: uid
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomActivation'
+          description: ''
+  /api/v1/announcement-images/:
+    get:
+      operationId: api_v1_announcement_images_list
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AnnouncementImage'
+          description: ''
+    post:
+      operationId: api_v1_announcement_images_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnnouncementImage'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AnnouncementImage'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AnnouncementImage'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnnouncementImage'
+          description: ''
+  /api/v1/announcement-images/{id}/:
+    get:
+      operationId: api_v1_announcement_images_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Изображение.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnnouncementImage'
+          description: ''
+    put:
+      operationId: api_v1_announcement_images_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Изображение.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AnnouncementImage'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AnnouncementImage'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AnnouncementImage'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnnouncementImage'
+          description: ''
+    patch:
+      operationId: api_v1_announcement_images_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Изображение.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAnnouncementImage'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedAnnouncementImage'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedAnnouncementImage'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnnouncementImage'
+          description: ''
+    delete:
+      operationId: api_v1_announcement_images_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Изображение.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/announcements/:
+    get:
+      operationId: api_v1_announcements_list
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Announcement'
+          description: ''
+    post:
+      operationId: api_v1_announcements_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Announcement'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Announcement'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Announcement'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Announcement'
+          description: ''
+  /api/v1/announcements/{id}/:
+    get:
+      operationId: api_v1_announcements_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Объявление.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Announcement'
+          description: ''
+    put:
+      operationId: api_v1_announcements_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Объявление.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Announcement'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Announcement'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Announcement'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Announcement'
+          description: ''
+    patch:
+      operationId: api_v1_announcements_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Объявление.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAnnouncement'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedAnnouncement'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedAnnouncement'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Announcement'
+          description: ''
+    delete:
+      operationId: api_v1_announcements_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Объявление.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/auth/jwt/create/:
+    post:
+      operationId: api_v1_auth_jwt_create_create
+      description: |-
+        Takes a set of user credentials and returns an access and refresh JSON web
+        token pair to prove the authentication of those credentials.
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenObtainPair'
+          description: ''
+  /api/v1/auth/jwt/refresh/:
+    post:
+      operationId: api_v1_auth_jwt_refresh_create
+      description: |-
+        Takes a refresh type JSON web token and returns an access type JSON web
+        token if the refresh token is valid.
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenRefresh'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenRefresh'
+          description: ''
+  /api/v1/auth/jwt/verify/:
+    post:
+      operationId: api_v1_auth_jwt_verify_create
+      description: |-
+        Takes a token and indicates if it is valid.  This view provides no
+        information about a token's fitness for a particular use.
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenVerify'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenVerify'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenVerify'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenVerify'
+          description: ''
+  /api/v1/categories/:
+    get:
+      operationId: api_v1_categories_list
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+          description: ''
+    post:
+      operationId: api_v1_categories_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Category'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Category'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Category'
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+          description: ''
+  /api/v1/categories/{id}/:
+    get:
+      operationId: api_v1_categories_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Категория.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+          description: ''
+    put:
+      operationId: api_v1_categories_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Категория.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Category'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Category'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Category'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+          description: ''
+    patch:
+      operationId: api_v1_categories_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Категория.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedCategory'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedCategory'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedCategory'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+          description: ''
+    delete:
+      operationId: api_v1_categories_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Категория.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/comments/:
+    get:
+      operationId: api_v1_comments_list
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Comment'
+          description: ''
+    post:
+      operationId: api_v1_comments_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Comment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Comment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Comment'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+          description: ''
+  /api/v1/comments/{id}/:
+    get:
+      operationId: api_v1_comments_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Комметарий.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+          description: ''
+    put:
+      operationId: api_v1_comments_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Комметарий.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Comment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Comment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Comment'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+          description: ''
+    patch:
+      operationId: api_v1_comments_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Комметарий.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedComment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedComment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedComment'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Comment'
+          description: ''
+    delete:
+      operationId: api_v1_comments_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Комметарий.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/curators/:
+    get:
+      operationId: api_v1_curators_list
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Curator'
+          description: ''
+    post:
+      operationId: api_v1_curators_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Curator'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Curator'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Curator'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Curator'
+          description: ''
+  /api/v1/curators/{id}/:
+    get:
+      operationId: api_v1_curators_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Куратор.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Curator'
+          description: ''
+    put:
+      operationId: api_v1_curators_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Куратор.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Curator'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Curator'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Curator'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Curator'
+          description: ''
+    patch:
+      operationId: api_v1_curators_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Куратор.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedCurator'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedCurator'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedCurator'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Curator'
+          description: ''
+    delete:
+      operationId: api_v1_curators_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Куратор.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/journal-images/:
+    get:
+      operationId: api_v1_journal_images_list
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/JournalImage'
+          description: ''
+    post:
+      operationId: api_v1_journal_images_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JournalImage'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/JournalImage'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/JournalImage'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JournalImage'
+          description: ''
+  /api/v1/journal-images/{id}/:
+    get:
+      operationId: api_v1_journal_images_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Изображение.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JournalImage'
+          description: ''
+    put:
+      operationId: api_v1_journal_images_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Изображение.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JournalImage'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/JournalImage'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/JournalImage'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JournalImage'
+          description: ''
+    patch:
+      operationId: api_v1_journal_images_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Изображение.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedJournalImage'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedJournalImage'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedJournalImage'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JournalImage'
+          description: ''
+    delete:
+      operationId: api_v1_journal_images_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Изображение.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/journals/:
+    get:
+      operationId: api_v1_journals_list
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Journal'
+          description: ''
+    post:
+      operationId: api_v1_journals_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Journal'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Journal'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Journal'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Journal'
+          description: ''
+  /api/v1/journals/{id}/:
+    get:
+      operationId: api_v1_journals_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Журнал.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Journal'
+          description: ''
+    put:
+      operationId: api_v1_journals_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Журнал.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Journal'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Journal'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Journal'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Journal'
+          description: ''
+    patch:
+      operationId: api_v1_journals_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Журнал.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedJournal'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedJournal'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedJournal'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Journal'
+          description: ''
+    delete:
+      operationId: api_v1_journals_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Журнал.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/like-on-comments/:
+    get:
+      operationId: api_v1_like_on_comments_list
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LikeOnComment'
+          description: ''
+    post:
+      operationId: api_v1_like_on_comments_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LikeOnComment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/LikeOnComment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/LikeOnComment'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LikeOnComment'
+          description: ''
+  /api/v1/like-on-comments/{id}/:
+    get:
+      operationId: api_v1_like_on_comments_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Лайк на комментарии.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LikeOnComment'
+          description: ''
+    put:
+      operationId: api_v1_like_on_comments_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Лайк на комментарии.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LikeOnComment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/LikeOnComment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/LikeOnComment'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LikeOnComment'
+          description: ''
+    patch:
+      operationId: api_v1_like_on_comments_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Лайк на комментарии.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedLikeOnComment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedLikeOnComment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedLikeOnComment'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LikeOnComment'
+          description: ''
+    delete:
+      operationId: api_v1_like_on_comments_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Лайк на комментарии.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/like-on-journals/:
+    get:
+      operationId: api_v1_like_on_journals_list
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LikeOnJournal'
+          description: ''
+    post:
+      operationId: api_v1_like_on_journals_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LikeOnJournal'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/LikeOnJournal'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/LikeOnJournal'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LikeOnJournal'
+          description: ''
+  /api/v1/like-on-journals/{id}/:
+    get:
+      operationId: api_v1_like_on_journals_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Лайк на записи.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LikeOnJournal'
+          description: ''
+    put:
+      operationId: api_v1_like_on_journals_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Лайк на записи.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LikeOnJournal'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/LikeOnJournal'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/LikeOnJournal'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LikeOnJournal'
+          description: ''
+    patch:
+      operationId: api_v1_like_on_journals_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Лайк на записи.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedLikeOnJournal'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedLikeOnJournal'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedLikeOnJournal'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LikeOnJournal'
+          description: ''
+    delete:
+      operationId: api_v1_like_on_journals_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Лайк на записи.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/medias/:
+    get:
+      operationId: api_v1_medias_list
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Media'
+          description: ''
+    post:
+      operationId: api_v1_medias_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Media'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Media'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Media'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Media'
+          description: ''
+  /api/v1/medias/{id}/:
+    get:
+      operationId: api_v1_medias_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this изображение.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Media'
+          description: ''
+    put:
+      operationId: api_v1_medias_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this изображение.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Media'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Media'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Media'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Media'
+          description: ''
+    patch:
+      operationId: api_v1_medias_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this изображение.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedMedia'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedMedia'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedMedia'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Media'
+          description: ''
+    delete:
+      operationId: api_v1_medias_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this изображение.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/pet-markings/:
+    get:
+      operationId: api_v1_pet_markings_list
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PetMarking'
+          description: ''
+    post:
+      operationId: api_v1_pet_markings_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PetMarking'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PetMarking'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PetMarking'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PetMarking'
+          description: ''
+  /api/v1/pet-markings/{id}/:
+    get:
+      operationId: api_v1_pet_markings_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Маркировка питомца.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PetMarking'
+          description: ''
+    put:
+      operationId: api_v1_pet_markings_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Маркировка питомца.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PetMarking'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PetMarking'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PetMarking'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PetMarking'
+          description: ''
+    patch:
+      operationId: api_v1_pet_markings_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Маркировка питомца.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPetMarking'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedPetMarking'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedPetMarking'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PetMarking'
+          description: ''
+    delete:
+      operationId: api_v1_pet_markings_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Маркировка питомца.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/pet-owners/:
+    get:
+      operationId: api_v1_pet_owners_list
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PetOwner'
+          description: ''
+    post:
+      operationId: api_v1_pet_owners_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PetOwner'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PetOwner'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PetOwner'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PetOwner'
+          description: ''
+  /api/v1/pet-owners/{id}/:
+    get:
+      operationId: api_v1_pet_owners_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Владелец питомца.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PetOwner'
+          description: ''
+    put:
+      operationId: api_v1_pet_owners_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Владелец питомца.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PetOwner'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PetOwner'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PetOwner'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PetOwner'
+          description: ''
+    patch:
+      operationId: api_v1_pet_owners_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Владелец питомца.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPetOwner'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedPetOwner'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedPetOwner'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PetOwner'
+          description: ''
+    delete:
+      operationId: api_v1_pet_owners_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Владелец питомца.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/pet-photos/:
+    get:
+      operationId: api_v1_pet_photos_list
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PetPhoto'
+          description: ''
+    post:
+      operationId: api_v1_pet_photos_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PetPhoto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PetPhoto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PetPhoto'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PetPhoto'
+          description: ''
+  /api/v1/pet-photos/{id}/:
+    get:
+      operationId: api_v1_pet_photos_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Фото питомца.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PetPhoto'
+          description: ''
+    put:
+      operationId: api_v1_pet_photos_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Фото питомца.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PetPhoto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PetPhoto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PetPhoto'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PetPhoto'
+          description: ''
+    patch:
+      operationId: api_v1_pet_photos_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Фото питомца.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPetPhoto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedPetPhoto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedPetPhoto'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PetPhoto'
+          description: ''
+    delete:
+      operationId: api_v1_pet_photos_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Фото питомца.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/pets/:
+    get:
+      operationId: api_v1_pets_list
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Pet'
+          description: ''
+    post:
+      operationId: api_v1_pets_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pet'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Pet'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Pet'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+          description: ''
+  /api/v1/pets/{id}/:
+    get:
+      operationId: api_v1_pets_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Питомец.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+          description: ''
+    put:
+      operationId: api_v1_pets_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Питомец.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pet'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Pet'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Pet'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+          description: ''
+    patch:
+      operationId: api_v1_pets_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Питомец.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPet'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedPet'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedPet'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pet'
+          description: ''
+    delete:
+      operationId: api_v1_pets_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Питомец.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/treatments/:
+    get:
+      operationId: api_v1_treatments_list
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Treatments'
+          description: ''
+    post:
+      operationId: api_v1_treatments_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Treatments'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Treatments'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Treatments'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Treatments'
+          description: ''
+  /api/v1/treatments/{id}/:
+    get:
+      operationId: api_v1_treatments_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Обработка.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Treatments'
+          description: ''
+    put:
+      operationId: api_v1_treatments_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Обработка.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Treatments'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Treatments'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Treatments'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Treatments'
+          description: ''
+    patch:
+      operationId: api_v1_treatments_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Обработка.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTreatments'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedTreatments'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedTreatments'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Treatments'
+          description: ''
+    delete:
+      operationId: api_v1_treatments_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Обработка.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/users/:
+    get:
+      operationId: api_v1_users_list
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+          description: ''
+    post:
+      operationId: api_v1_users_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserCreate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserCreate'
+        required: true
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserCreate'
+          description: ''
+  /api/v1/users/{id}/:
+    get:
+      operationId: api_v1_users_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Пользователь.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    put:
+      operationId: api_v1_users_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Пользователь.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    patch:
+      operationId: api_v1_users_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Пользователь.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    delete:
+      operationId: api_v1_users_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Пользователь.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/users/activation/:
+    post:
+      operationId: api_v1_users_activation_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Activation'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Activation'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Activation'
+        required: true
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Activation'
+          description: ''
+  /api/v1/users/me/:
+    get:
+      operationId: api_v1_users_me_retrieve
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    put:
+      operationId: api_v1_users_me_update
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    patch:
+      operationId: api_v1_users_me_partial_update
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    delete:
+      operationId: api_v1_users_me_destroy
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/v1/users/resend_activation/:
+    post:
+      operationId: api_v1_users_resend_activation_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendEmailReset'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SendEmailReset'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SendEmailReset'
+        required: true
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendEmailReset'
+          description: ''
+  /api/v1/users/reset_email/:
+    post:
+      operationId: api_v1_users_reset_email_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendEmailReset'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SendEmailReset'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SendEmailReset'
+        required: true
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendEmailReset'
+          description: ''
+  /api/v1/users/reset_email_confirm/:
+    post:
+      operationId: api_v1_users_reset_email_confirm_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UsernameResetConfirm'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UsernameResetConfirm'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UsernameResetConfirm'
+        required: true
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsernameResetConfirm'
+          description: ''
+  /api/v1/users/reset_password/:
+    post:
+      operationId: api_v1_users_reset_password_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendEmailReset'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SendEmailReset'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SendEmailReset'
+        required: true
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendEmailReset'
+          description: ''
+  /api/v1/users/reset_password_confirm/:
+    post:
+      operationId: api_v1_users_reset_password_confirm_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordResetConfirm'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PasswordResetConfirm'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PasswordResetConfirm'
+        required: true
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PasswordResetConfirm'
+          description: ''
+  /api/v1/users/set_email/:
+    post:
+      operationId: api_v1_users_set_email_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetUsername'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SetUsername'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SetUsername'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SetUsername'
+          description: ''
+  /api/v1/users/set_password/:
+    post:
+      operationId: api_v1_users_set_password_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SetPassword'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SetPassword'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SetPassword'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SetPassword'
+          description: ''
+  /api/v1/vaccinations/:
+    get:
+      operationId: api_v1_vaccinations_list
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Vaccination'
+          description: ''
+    post:
+      operationId: api_v1_vaccinations_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Vaccination'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Vaccination'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Vaccination'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vaccination'
+          description: ''
+  /api/v1/vaccinations/{id}/:
+    get:
+      operationId: api_v1_vaccinations_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this вакцинация.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vaccination'
+          description: ''
+    put:
+      operationId: api_v1_vaccinations_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this вакцинация.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Vaccination'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Vaccination'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Vaccination'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vaccination'
+          description: ''
+    patch:
+      operationId: api_v1_vaccinations_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this вакцинация.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedVaccination'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedVaccination'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedVaccination'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vaccination'
+          description: ''
+    delete:
+      operationId: api_v1_vaccinations_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this вакцинация.
+        required: true
+      tags:
+      - api
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+components:
+  schemas:
+    Activation:
+      type: object
+      properties:
+        uid:
+          type: string
+        token:
+          type: string
+      required:
+      - token
+      - uid
+    Announcement:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        author:
+          type: integer
+          title: Автор объявления
+        co_curator:
+          type: integer
+          nullable: true
+          title: Сокуратор объявления
+          description: Выберите второго куратора по данному объявлению
+        pet:
+          type: integer
+          title: Питомец
+        category:
+          type: integer
+          title: Категория
+        title:
+          type: string
+          title: Название объявления
+          description: |-
+            Не используйте в названии
+                    Caps Lock, а также слово "Срочно"...
+          maxLength: 256
+        description:
+          type: string
+          title: Описание
+          description: Подробно опишите возникшую ситуацию
+          maxLength: 1024
+        addres:
+          type: string
+          title: Город
+          maxLength: 256
+        immediately:
+          type: boolean
+          title: 'Срочное: да/нет'
+        completed:
+          type: boolean
+          title: 'Завершено: да/нет'
+        published:
+          type: boolean
+          title: 'Опубликовано: да/нет'
+        pet_with_me:
+          type: boolean
+          title: 'Питомец у автора: да/нет'
+        residence_place:
+          allOf:
+          - $ref: '#/components/schemas/ResidencePlaceEnum'
+          title: Место содержания
+      required:
+      - addres
+      - author
+      - category
+      - description
+      - id
+      - pet
+      - title
+    AnnouncementImage:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        image:
+          type: string
+          format: uri
+          title: Фото объявления
+          pattern: (?:jpg|png|gif)$
+        announcement:
+          type: integer
+          title: Изображение объявления
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата и время создания
+      required:
+      - announcement
+      - created_at
+      - id
+      - image
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          allOf:
+          - $ref: '#/components/schemas/NameEnum'
+          title: Категория
+      required:
+      - id
+    Comment:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        announcement:
+          type: integer
+          title: Комментарий
+        author:
+          type: integer
+          title: Автор комментария
+        text:
+          type: string
+          title: Описание
+          description: Ваш комментарий
+          maxLength: 1024
+      required:
+      - announcement
+      - author
+      - id
+      - text
+    Curator:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата и время создания
+        passport:
+          type: string
+          format: uri
+          title: Паспорт
+          pattern: (?:jpg|jpeg|png)$
+        contract:
+          type: string
+          format: uri
+          title: Контракт
+          pattern: (?:pdf|doc|docx|txt|odt|sxg)$
+        is_moderated:
+          type: boolean
+          title: Проведена проверка
+        user:
+          type: integer
+      required:
+      - contract
+      - created_at
+      - id
+      - passport
+      - user
+    CustomActivation:
+      type: object
+      properties:
+        uid:
+          type: string
+        token:
+          type: string
+      required:
+      - token
+      - uid
+    GenderEnum:
+      enum:
+      - MALE
+      - FEMALE
+      type: string
+    Journal:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        announcement:
+          type: integer
+          title: Объявление
+        author:
+          type: integer
+          title: Автор записи
+        text:
+          type: string
+          title: Описание
+          description: Подробно опишите возникшую ситуацию
+          maxLength: 1024
+      required:
+      - announcement
+      - author
+      - id
+      - text
+    JournalImage:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        image:
+          type: string
+          format: uri
+          title: Фото журнала
+          pattern: (?:jpg|png|gif)$
+        journal:
+          type: integer
+          title: Изображение журнале
+      required:
+      - id
+      - image
+      - journal
+    LikeOnComment:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        comment:
+          type: integer
+      required:
+      - comment
+      - id
+    LikeOnJournal:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        jounal:
+          type: integer
+      required:
+      - id
+      - jounal
+    Media:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        image_main:
+          type: string
+          format: uri
+        image_1080px:
+          type: string
+          format: uri
+          nullable: true
+        image_720px:
+          type: string
+          format: uri
+          nullable: true
+        image_360px:
+          type: string
+          format: uri
+          nullable: true
+        announcement:
+          type: integer
+          title: Объявление
+        name:
+          type: string
+          readOnly: true
+          nullable: true
+      required:
+      - announcement
+      - id
+      - image_main
+      - name
+    NameEnum:
+      enum:
+      - FUNDRAISING
+      - LOOKING_HOME
+      - LOST_FOUND
+      type: string
+    OwnershipStatusEnum:
+      enum:
+      - OWNER
+      - TEMPORARY_OWNER
+      type: string
+    PasswordResetConfirm:
+      type: object
+      properties:
+        uid:
+          type: string
+        token:
+          type: string
+        new_password:
+          type: string
+      required:
+      - new_password
+      - token
+      - uid
+    PatchedAnnouncement:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        author:
+          type: integer
+          title: Автор объявления
+        co_curator:
+          type: integer
+          nullable: true
+          title: Сокуратор объявления
+          description: Выберите второго куратора по данному объявлению
+        pet:
+          type: integer
+          title: Питомец
+        category:
+          type: integer
+          title: Категория
+        title:
+          type: string
+          title: Название объявления
+          description: |-
+            Не используйте в названии
+                    Caps Lock, а также слово "Срочно"...
+          maxLength: 256
+        description:
+          type: string
+          title: Описание
+          description: Подробно опишите возникшую ситуацию
+          maxLength: 1024
+        addres:
+          type: string
+          title: Город
+          maxLength: 256
+        immediately:
+          type: boolean
+          title: 'Срочное: да/нет'
+        completed:
+          type: boolean
+          title: 'Завершено: да/нет'
+        published:
+          type: boolean
+          title: 'Опубликовано: да/нет'
+        pet_with_me:
+          type: boolean
+          title: 'Питомец у автора: да/нет'
+        residence_place:
+          allOf:
+          - $ref: '#/components/schemas/ResidencePlaceEnum'
+          title: Место содержания
+    PatchedAnnouncementImage:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        image:
+          type: string
+          format: uri
+          title: Фото объявления
+          pattern: (?:jpg|png|gif)$
+        announcement:
+          type: integer
+          title: Изображение объявления
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата и время создания
+    PatchedCategory:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          allOf:
+          - $ref: '#/components/schemas/NameEnum'
+          title: Категория
+    PatchedComment:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        announcement:
+          type: integer
+          title: Комментарий
+        author:
+          type: integer
+          title: Автор комментария
+        text:
+          type: string
+          title: Описание
+          description: Ваш комментарий
+          maxLength: 1024
+    PatchedCurator:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата и время создания
+        passport:
+          type: string
+          format: uri
+          title: Паспорт
+          pattern: (?:jpg|jpeg|png)$
+        contract:
+          type: string
+          format: uri
+          title: Контракт
+          pattern: (?:pdf|doc|docx|txt|odt|sxg)$
+        is_moderated:
+          type: boolean
+          title: Проведена проверка
+        user:
+          type: integer
+    PatchedJournal:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        announcement:
+          type: integer
+          title: Объявление
+        author:
+          type: integer
+          title: Автор записи
+        text:
+          type: string
+          title: Описание
+          description: Подробно опишите возникшую ситуацию
+          maxLength: 1024
+    PatchedJournalImage:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        image:
+          type: string
+          format: uri
+          title: Фото журнала
+          pattern: (?:jpg|png|gif)$
+        journal:
+          type: integer
+          title: Изображение журнале
+    PatchedLikeOnComment:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        comment:
+          type: integer
+    PatchedLikeOnJournal:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        jounal:
+          type: integer
+    PatchedMedia:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        image_main:
+          type: string
+          format: uri
+        image_1080px:
+          type: string
+          format: uri
+          nullable: true
+        image_720px:
+          type: string
+          format: uri
+          nullable: true
+        image_360px:
+          type: string
+          format: uri
+          nullable: true
+        announcement:
+          type: integer
+          title: Объявление
+        name:
+          type: string
+          readOnly: true
+          nullable: true
+    PatchedPet:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          title: Кличка
+          maxLength: 50
+        type:
+          type: integer
+          nullable: true
+          title: Вид
+        gender:
+          allOf:
+          - $ref: '#/components/schemas/GenderEnum'
+          title: Пол
+        breed:
+          type: string
+          title: Порода
+          maxLength: 50
+        color:
+          type: string
+          title: Масть
+          maxLength: 50
+        date_birth:
+          type: string
+          format: date
+          title: Дата рождения
+        date_birth_approx:
+          type: boolean
+          title: Примерная дата рождения да/нет
+        photos:
+          type: array
+          items:
+            $ref: '#/components/schemas/PetPhoto'
+          readOnly: true
+    PatchedPetMarking:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        number:
+          type: string
+          title: Номер маркировки
+          maxLength: 50
+        pet:
+          type: integer
+          title: Питомец
+        is_verifed:
+          type: boolean
+          title: Верифицирован да/нет
+    PatchedPetOwner:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        user:
+          type: integer
+          title: Владелец питомца
+        ownership_status:
+          allOf:
+          - $ref: '#/components/schemas/OwnershipStatusEnum'
+          title: Статус владения
+        pet:
+          type: integer
+          title: Питомец
+    PatchedPetPhoto:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        pet:
+          type: integer
+          title: Питомец
+        photo:
+          type: string
+          format: uri
+          title: Фото питомца
+        main_photo:
+          type: boolean
+          title: Главное фото да/нет
+    PatchedTreatments:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        pet:
+          type: integer
+          title: Питомец
+        type_treatment:
+          type: integer
+          title: Тип обработки
+        medicament:
+          type: integer
+          title: Медикамент
+        date_treatment:
+          type: string
+          format: date
+          title: Дата обработки
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата и время создания
+    PatchedUser:
+      type: object
+      properties:
+        phone:
+          type: string
+          title: Телефон
+          maxLength: 15
+        first_name:
+          type: string
+          title: Имя
+          maxLength: 255
+        id:
+          type: integer
+          readOnly: true
+        email:
+          type: string
+          format: email
+          readOnly: true
+          title: Почта
+    PatchedVaccination:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        pet:
+          type: integer
+          title: Питомец
+        type:
+          type: integer
+          nullable: true
+          title: Тип Вакцины
+        medicament:
+          type: integer
+          nullable: true
+          title: Вакцина
+        date_vaccination:
+          type: string
+          format: date-time
+          title: Дата Вакцинации
+    Pet:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          title: Кличка
+          maxLength: 50
+        type:
+          type: integer
+          nullable: true
+          title: Вид
+        gender:
+          allOf:
+          - $ref: '#/components/schemas/GenderEnum'
+          title: Пол
+        breed:
+          type: string
+          title: Порода
+          maxLength: 50
+        color:
+          type: string
+          title: Масть
+          maxLength: 50
+        date_birth:
+          type: string
+          format: date
+          title: Дата рождения
+        date_birth_approx:
+          type: boolean
+          title: Примерная дата рождения да/нет
+        photos:
+          type: array
+          items:
+            $ref: '#/components/schemas/PetPhoto'
+          readOnly: true
+      required:
+      - breed
+      - color
+      - date_birth
+      - gender
+      - id
+      - name
+      - photos
+    PetMarking:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        number:
+          type: string
+          title: Номер маркировки
+          maxLength: 50
+        pet:
+          type: integer
+          title: Питомец
+        is_verifed:
+          type: boolean
+          title: Верифицирован да/нет
+      required:
+      - id
+      - number
+      - pet
+    PetOwner:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        user:
+          type: integer
+          title: Владелец питомца
+        ownership_status:
+          allOf:
+          - $ref: '#/components/schemas/OwnershipStatusEnum'
+          title: Статус владения
+        pet:
+          type: integer
+          title: Питомец
+      required:
+      - id
+      - pet
+      - user
+    PetPhoto:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        pet:
+          type: integer
+          title: Питомец
+        photo:
+          type: string
+          format: uri
+          title: Фото питомца
+        main_photo:
+          type: boolean
+          title: Главное фото да/нет
+      required:
+      - id
+      - pet
+      - photo
+    ResidencePlaceEnum:
+      enum:
+      - HOME
+      - SHELTER
+      type: string
+    SendEmailReset:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+      required:
+      - email
+    SetPassword:
+      type: object
+      properties:
+        new_password:
+          type: string
+        current_password:
+          type: string
+      required:
+      - current_password
+      - new_password
+    SetUsername:
+      type: object
+      properties:
+        current_password:
+          type: string
+        new_email:
+          type: string
+          format: email
+          title: Почта
+          maxLength: 255
+      required:
+      - current_password
+      - new_email
+    TokenObtainPair:
+      type: object
+      properties:
+        email:
+          type: string
+          writeOnly: true
+        password:
+          type: string
+          writeOnly: true
+        access:
+          type: string
+          readOnly: true
+        refresh:
+          type: string
+          readOnly: true
+      required:
+      - access
+      - email
+      - password
+      - refresh
+    TokenRefresh:
+      type: object
+      properties:
+        access:
+          type: string
+          readOnly: true
+        refresh:
+          type: string
+          writeOnly: true
+      required:
+      - access
+      - refresh
+    TokenVerify:
+      type: object
+      properties:
+        token:
+          type: string
+          writeOnly: true
+      required:
+      - token
+    Treatments:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        pet:
+          type: integer
+          title: Питомец
+        type_treatment:
+          type: integer
+          title: Тип обработки
+        medicament:
+          type: integer
+          title: Медикамент
+        date_treatment:
+          type: string
+          format: date
+          title: Дата обработки
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата и время создания
+      required:
+      - created_at
+      - date_treatment
+      - id
+      - medicament
+      - pet
+      - type_treatment
+    User:
+      type: object
+      properties:
+        phone:
+          type: string
+          title: Телефон
+          maxLength: 15
+        first_name:
+          type: string
+          title: Имя
+          maxLength: 255
+        id:
+          type: integer
+          readOnly: true
+        email:
+          type: string
+          format: email
+          readOnly: true
+          title: Почта
+      required:
+      - email
+      - first_name
+      - id
+      - phone
+    UserCreate:
+      type: object
+      properties:
+        phone:
+          type: string
+          title: Телефон
+          maxLength: 15
+        first_name:
+          type: string
+          title: Имя
+          maxLength: 255
+        email:
+          type: string
+          format: email
+          title: Почта
+          maxLength: 255
+        id:
+          type: integer
+          readOnly: true
+        password:
+          type: string
+          writeOnly: true
+      required:
+      - email
+      - first_name
+      - id
+      - password
+      - phone
+    UsernameResetConfirm:
+      type: object
+      properties:
+        new_email:
+          type: string
+          format: email
+          title: Почта
+          maxLength: 255
+      required:
+      - new_email
+    Vaccination:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        pet:
+          type: integer
+          title: Питомец
+        type:
+          type: integer
+          nullable: true
+          title: Тип Вакцины
+        medicament:
+          type: integer
+          nullable: true
+          title: Вакцина
+        date_vaccination:
+          type: string
+          format: date-time
+          title: Дата Вакцинации
+      required:
+      - date_vaccination
+      - id
+      - pet
+  securitySchemes:
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

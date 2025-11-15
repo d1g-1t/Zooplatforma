@@ -1,0 +1,56 @@
+:root {
+  // --grey-000: hsl(0 0% 100%);
+  // --grey-200: hsl(230, 23%, 95%); // bg ?
+  // --grey-200: hsl(230 25% 95%); // bg ?
+  // --grey-250: hsl(222 38% 95%); // border
+  // --grey-300: hsl(220, 16%, 96%); // login bg
+  // --grey-400: hsl(220 23% 23% / 5%); // text secondary
+  // --grey-700: hsl(0 0% 0% / 5%); // overlay
+  // --grey-900: hsl(220 23% 23%); // text
+
+  // --blue-100: hsl(216 100% 62% / 10%);
+  // --blue-400: hsl(216 100% 62%);
+  // --green-400: hsl(162 63% 44%);
+  // --green-500: hsl(166, 74%, 40%);
+  // --orange-100: hsl(15, 100%, 63% / 3%);
+  // --orange-300: hsl(15, 100%, 63%);
+  // --orange-400: hsl(25 100% 54%);
+  // --red-500: hsl(0 100% 63%);
+  // --red-400: hsl(0 100% 72%);
+  // --red-100: hsl(0 100% 63% / 5%);
+
+  // и так, палитру удаляем, и просто сюда хардкодим цвета? В палитре можно хранить ранние импользуемые цвета, а если захардкодить и затереть, потом можно и не вспомнить какой был. И опять же, палитра - один источник правды. Не будет опечатки.
+
+  --color-neutral: #ffffff;
+  --color-main: hsl(216, 100%, 62%);
+  --color-main-light: hsla(216, 100%, 62%, 0.1);
+  --color-attention: #ff4343;
+  --color-accent-green: #2ab68c;
+  --color-accent-orange: #ff7715;
+  --color-accent-red: #ff7070;
+  --color-table: rgba(237, 240, 247, 20%);
+
+  --color-text-primary: #2d3648;
+  --color-text-primary-light: hsl(220, 23%, 23%, 50%);
+  // цифры лайков, формы, лэйблы, соц сети
+  --color-text-secondary: #868c95; // label под цифрами на баннере с котиком
+  --color-text-secondary-light: #a1a8b2; // цвет лейбла: Сбор средств и т.п.
+  --color-text-secondary-dark: #717d96; // sidebar text
+
+  --color-popup-overlay: hsla(0, 0%, 0%, 0.5);
+  --color-border: #edf0f7;
+  --border-radius: 10px;
+
+  --font-family-sans: 'Inter', sans-serif;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semi-bold: 600;
+  --font-weight-bold: 700;
+
+  --font-size-xs: 14px;
+  --font-size-s: 16px;
+  --font-size-m: 20px;
+  --font-size-l: 25px;
+  --font-size-xl: 32px;
+}

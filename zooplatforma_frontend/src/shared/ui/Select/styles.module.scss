@@ -1,0 +1,100 @@
+@import '../../../app/styles/variables.scss';
+@import '../../assets/fonts/fonts.scss';
+
+.SelectWrapper {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  width: 100%;
+}
+
+.Label {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-semi-bold);
+  font-size: var(--font-size-s);
+  color: var(--color-text-primary);
+  line-height: 16px;
+}
+
+.SelectContainer {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: inline-block;
+  position: relative;
+}
+
+.Select {
+  margin: 0;
+  padding: 12px 12px 12px 16px;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-primary);
+  line-height: 150%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  cursor: pointer;
+  border: 2px solid var(--color-border);
+  border-radius: 6px;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.open {
+  border-radius: 6px 6px 0 0;
+}
+
+.IconContainer {
+  margin: 0;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.ArrowIcon {
+  margin: 0;
+  padding: 0;
+  width: 14px;
+  height: 8px;
+}
+
+.OptionsList {
+  margin: 0;
+  padding: 12px 12px 12px 16px;
+  width: 100%;
+  box-sizing: border-box;
+  position: absolute;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  border: 1px solid #cbd2e0;
+  border-radius: 0 0 6px 6px;
+  background: var(--color-neutral);
+  z-index: 1;
+}
+
+.OptionsListElement {
+  margin: 0;
+  padding: 0;
+}
+
+.Select-error {
+  border-color: var(--color-attention);
+}
+
+.error-message {
+  color: var(--color-attention);
+  font-size: var(--font-size-xs);
+  margin-top: 4px;
+}

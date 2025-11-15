@@ -1,0 +1,97 @@
+@import '../../../app/styles/variables.scss';
+@import '../../../shared/assets/fonts/fonts.scss';
+
+.PopupBecomeCurator {
+  max-width: 460px;
+  max-height: 1040px;
+}
+
+.Content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.container {
+  padding: 40px 0 40px 0;
+}
+
+.container:nth-child(1) {
+  padding: 0;
+}
+
+.button__container {
+  display: flex;
+  flex-direction: row;
+  padding-top: 10px;
+}
+
+.form__container {
+  max-width: 380px;
+}
+
+.closeButton {
+  background-image: none;
+  color: transparent(50%);
+}
+
+.button__close {
+  background-color: gray;
+  color: gray;
+}
+
+.button__submit {
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 12px 20px;
+  font-family: var(--font-family-sans);
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border 0.3s ease;
+  font-weight: var(--font-weight-medium);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-main);
+  color: var(--color-neutral);
+}
+
+.title {
+  padding: 5px;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  text-align: left;
+  color: #2d3648;
+}
+
+.title_big {
+  margin-bottom: 5px;
+  font-family: Inter;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: left;
+  color: #2d3648;
+}
+
+.title_gray {
+  margin-top: 0;
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  text-align: left;
+  color: #2d364880;
+}
+
+.link {
+  color: #3c8aff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: medium;
+  font-family: sans-serif;
+}

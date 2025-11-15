@@ -1,0 +1,60 @@
+.uploadContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 348px;
+}
+.uploadButton {
+  width: 100%;
+  min-height: 200px;
+  background-color: #fff;
+  border: 2px solid #d0d2d9;
+  border-radius: 10px;
+  border-style: dashed;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.uploadButtonIconImage {
+  width: 40px;
+  height: 40px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 10px;
+  background-clip: padding-box;
+  background-image: url(../../../shared/assets/icons/icon-image_placeholder.svg);
+  margin: 0 auto;
+}
+.photoConteiner {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.photoItem {
+  width: 164px;
+  height: 164px;
+  position: relative;
+}
+.previewImage {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  border: 2px solid #d0d2d9;
+  object-fit: cover;
+}
+.deleteButton {
+  position: absolute;
+  right: 19px;
+  top: 19px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-image: url(/src/shared/assets/icons/icon_x.svg);
+  background-position: center;
+  border: none;
+}

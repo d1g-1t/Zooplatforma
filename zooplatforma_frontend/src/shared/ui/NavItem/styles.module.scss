@@ -1,0 +1,30 @@
+@import '../../../app/styles/variables';
+@import '../../../shared/assets/fonts/fonts';
+
+.navItem {
+  color: var(--color-text-secondary-dark);
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: 24px;
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+  align-items: center;
+  border-radius: 8px;
+  background-color: var(--color-neutral);
+  padding: 8px 15px;
+  margin: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+
+  &:hover {
+    opacity: 0.8;
+    background-color: #f8f8fa;
+  }
+}
+
+.active {
+  color: var(--color-main);
+  background-color: rgba(60, 138, 255, 0.08);
+}

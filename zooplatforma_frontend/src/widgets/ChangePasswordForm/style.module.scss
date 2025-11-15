@@ -1,0 +1,84 @@
+@import '../../../src/app/styles/_variables';
+
+.content {
+  display: flex;
+  padding: 70px 70px 0;
+  margin: 0;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+
+.FormInputs {
+  max-width: 532px;
+  width: 100%;
+}
+
+.Section {
+  margin: 0;
+  padding: 0;
+  padding-bottom: 50px;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.Title {
+  margin: 0;
+  padding: 0;
+  color: var(--color-text-primary);
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-s);
+  line-height: 0.75em;
+  margin-bottom: 15px;
+}
+
+.Hint {
+  margin: 0;
+  padding: 0;
+  color: rgba(45, 54, 72, 50%);
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-xs);
+  line-height: 0.72em;
+}
+
+.profileInputs {
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
+}
+
+.passwordInputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.toggleIcon {
+  position: absolute;
+  top: 40px;
+  right: 12px;
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+  cursor: pointer;
+}
+.toggleIcon:hover img {
+  filter: brightness(1.2);
+}
+.toggleIcon:hover {
+  color: var(--color-text-primary);
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.WhiteButton {
+  background-color: transparent;
+  color: var(--color-main);
+  border: none;
+  cursor: pointer;
+}

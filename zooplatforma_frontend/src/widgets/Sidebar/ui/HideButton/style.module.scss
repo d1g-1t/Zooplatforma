@@ -1,0 +1,22 @@
+.hideButton {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border-radius: 50%;
+  width: 23px;
+  height: 23px;
+  border: 1px solid #f0f1f6;
+  cursor: pointer;
+}
+
+.active {
+  transform: rotate(-180deg);
+  transition-property: transform;
+  transition-duration: 0.2s;
+}
+
+.inactive {
+  transform: rotate(0deg);
+  transition-property: transform;
+  transition-duration: 0.2s;
+}
