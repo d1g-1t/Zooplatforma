@@ -31,31 +31,26 @@ setup: clean ensure-env
 	@echo " Zooplatforma - First Time Setup"
 	@echo "========================================="
 	@echo ""
-	@echo "[1/6] Building Docker images..."
+	@echo "[1/5] Building Docker images..."
 	@docker compose -f $(COMPOSE_FILE) build --quiet
 	@echo "✓ Images built successfully"
 	@echo ""
-	@echo "[2/6] Starting database and cache..."
+	@echo "[2/5] Starting database and cache..."
 	@docker compose -f $(COMPOSE_FILE) up -d db redis
 	@echo "✓ Database and cache started"
 	@echo ""
-	@echo "[3/6] Waiting for services to be healthy..."
-	@sleep 10
-	@docker compose -f $(COMPOSE_FILE) exec -T db pg_isready -U zoo_user -d zoo_project > /dev/null 2>&1 || sleep 5
-	@echo "✓ Services are healthy"
+	@echo "[3/5] Waiting for database initialization (60 seconds)..."
+	@sleep 60
+	@echo "✓ Database ready"
 	@echo ""
-	@echo "[4/6] Starting backend and celery..."
+	@echo "[4/5] Starting backend and celery..."
 	@docker compose -f $(COMPOSE_FILE) up -d backend celery
 	@echo "✓ Backend and celery started"
 	@echo ""
-	@echo "[5/6] Waiting for backend initialization..."
-	@sleep 25
-	@echo "✓ Backend initialized"
-	@echo ""
-	@echo "[6/6] Starting frontend..."
+	@echo "[5/5] Starting frontend..."
+	@sleep 30
 	@docker compose -f $(COMPOSE_FILE) up -d frontend
 	@sleep 5
-	@echo "✓ Frontend started"
 	@echo ""
 	@echo "========================================="
 	@echo " ✓ Setup completed successfully!"
