@@ -1,153 +1,102 @@
-# zoo_back
+# Зооплатформа Backend
 
-## Запуск проекта локально
+REST API для социальной платформы помощи животным с системой объявлений, управлением питомцами и ролевой моделью пользователей.
 
-1. На GitHub форкнуть ветку 'develop' и клонировать репо:
+## Технологический стек
 
-    ```bash
-    git clone git@github.com:Studio-Yandex-Practicum/zoo_back.git
-    ```
+**Backend:** Python 3.12, Django 5.0.6, Django REST Framework 3.15.2  
+**Database:** PostgreSQL 15, Redis 6  
+**Auth:** JWT (simplejwt 5.3.1), Djoser 2.2.3  
+**Queue:** Celery 5.4.0 + Redis  
+**DevOps:** Docker, Docker Compose, Gunicorn 20.1.0, Nginx  
+**Testing:** pytest 8.3.3, pytest-django 4.8.0  
+**Code Quality:** pre-commit, ruff 0.5.0, flake8 7.1.1  
+**Documentation:** drf-spectacular (OpenAPI/Swagger)
 
-2. Переключиться локально в ветку 'develop':
+## Ключевые возможности
 
-    ```bash
-    cd zoo_back
-    git branch -a           - см все ветки
-    git checkout develop    - переходим в ветку 'develop'
-    git branch              - прверяем, что находимся в ветке develop
-    ```
+- JWT-аутентификация с token blacklist ротацией
+- Кастомная User-модель с ролевым доступом (куратор/пользователь)
+- Асинхронная обработка email-уведомлений через Celery
+- Оптимизация запросов с select_related/prefetch_related
+- Кеширование через Redis для ускорения чтения
+- Система объявлений с со-кураторами и фильтрацией
+- Автоматическая OpenAPI-документация
+- Расширенная админ-панель с inline-формами
 
-3. Установить poetry и активировать виртуальное окружение:
+## Быстрый старт
 
-    ```bash
-    pip install poetry
-    poetry config virtualenvs.in-project true
-    poetry shell
-    poetry install --with dev
-    ```
+### Запуск через Docker Compose
 
-4. Развернуть pre-commit:
+```bash
+# Создать .env на основе шаблона
+make ensure-env
 
-    ```bash
-    poetry run pre-commit install
-    ```
+# Запустить все сервисы (PostgreSQL, Redis, Django, Celery)
+make up
 
-    1. Для push используем (Внимание!!! для успешного коммита, необходимо, подключить проект к БД):
+# Создать суперпользователя
+make superuser
+```
 
-        ```bash
-        git add .
-        git commit -m 'правильный коммит'
-        см.: (https://gist.github.com/Voloshin-Sergei/ffbec67c6d9fcb32b0df014ababba0e9)
-        git push
-        ```
+API доступен по адресу: `http://localhost:8000`  
+Документация: `http://localhost:8000/api/schema/swagger/`
 
-    2. Создать Pull Request:
+### Локальная разработка с Poetry
 
-        * На Вашей странице GitHub выбрать копию репо
-        * Выбрать ветвь feature и нажать кнопку Pull Request
-        * Ввести название и описание Ваших изменений
-        * Слева (ветка, куда будут вливаться изменения) - выбрать 'develop'
-        * Справа (изменения с Вашего репозитория) - выбрать нужное
-        * Нажать кнопку: 'Send pull request'
+```bash
+# Установить зависимости
+pip install poetry
+poetry config virtualenvs.in-project true
+poetry shell
+poetry install --with dev
 
-5. Использование Makefile для управления контейнерами:
+# Настроить pre-commit hooks
+pre-commit install
 
-    * Создать локальный `.env` на основе шаблона:
-
-        ```bash
-        make ensure-env
-        ```
-
-        Команда копирует `.env.example` в `.env`, если файл ещё не создан.
-
-    * Запуск контейнеров:
-
-        ```bash
-        make up
-        ```
-
-    * Остановка и удаление контейнеров:
-
-        ```bash
-        make down
-        ```
-
-    * Создание суперпользователя:
-
-        ```bash
-        make superuser
-        ```
-
-    * Запуск pre-commit:
-
-        ```bash
-        make pre-commit
-        ```
-
-    * Заблокировать файлы pyproject.toml:
-
-        ```bash
-        make lock
-        ```
-
-## Запуск тестов
-
-Запускаем из каталога zoo_back/backend
-
-```commandline
+# Запустить тесты
 pytest
 ```
 
-## Рекомендации по написанию тестов
+## Управление контейнерами (Makefile)
 
-Фикстуры общие для всех приложений должны находиться в `test/conftest.py`.
-Фикстуры относящиеся к конкретному приложению должны быть разнесены по пакетам `{test/packege_name}/conftest.py`
+```bash
+make up          # Запустить контейнеры
+make down        # Остановить и удалить контейнеры
+make superuser   # Создать суперпользователя
+make pre-commit  # Запустить pre-commit hooks
+make lock        # Обновить зависимости (poetry.lock)
+```
 
-Файлы с тестами должны начинаться с 'test_*/.ry'
+## Архитектура
 
-## Запуск Postgres в контейнере
+- **3 модульных приложения:** users, pets, announcements
+- **15+ связанных моделей** с оптимизированными queryset'ами
+- **Health checks** для всех сервисов в Docker
+- **Автоматические миграции** при запуске контейнеров
+- **Логирование** в файлы и консоль
 
-### создать контуйнер `postgres_dev`
+## Работа с базой данных
 
-Создай файл `.env` в директории `backend`, заполни его согласно [.env.example](./.env.example):
-
-Запускаем из каталога `zoo_back/backend`
-
-* Пересоздать и запустить контейнер
-
-    ```bash
-    docker-compose up -d
-    ```
-
-* Остановить и удалить контейнер
-
-    ```bash
-    docker-compose down
-    ```
-
-* Удалить volume, вместе с БД, если данные ненужны:
-
-    ```bash
-    docker volume rm backend_db_data_dev
-    ```
-
-### Работа с данными внутри контейнера
-
-Запускаем из каталога `zoo_back/backend`
+### Подключение к PostgreSQL в контейнере
 
 ```bash
 docker exec -it postgres_dev psql -U zoo_user -d zoo_project
 ```
 
-postgres_dev — это имя контейнера
-zoo_user — имя пользователя PostgreSQL
-zoo_project — имя базы данных
+### Полезные команды psql
 
-* Набор полезных команд в psql
+```sql
+\l                          -- список баз данных
+\dt                         -- список таблиц
+\d table_name               -- структура таблицы
+DROP TABLE pets_pet CASCADE -- удалить таблицу с зависимостями
+```
 
-    ```sql
-    \help — выводит справку по командам;
-    \l — выводит список баз данных на сервере;
-    \dt — выводит список таблиц в текущей базе данных;
-    DROP TABLE pets_pet CASCADE; - удалить таблицу `pets_pet`;
-    ```
+## Тестирование
+
+Фикстуры организованы по уровням:
+- Общие: `tests/conftest.py`
+- Специфичные: `tests/{app_name}/conftest.py`
+
+Файлы тестов: `test_*.py`
