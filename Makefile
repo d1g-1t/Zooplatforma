@@ -31,39 +31,56 @@ setup: clean ensure-env
 	@echo " Zooplatforma - First Time Setup"
 	@echo "========================================="
 	@echo ""
-	@echo "[1/5] Building Docker images..."
-	@docker compose -f $(COMPOSE_FILE) build --quiet
+	@echo "[1/4] Building Docker images..."
+	@docker compose -f $(COMPOSE_FILE) build
 	@echo "✓ Images built successfully"
 	@echo ""
-	@echo "[2/5] Starting database and cache..."
+	@echo "[2/4] Starting database and cache..."
 	@docker compose -f $(COMPOSE_FILE) up -d db redis
 	@echo "✓ Database and cache started"
 	@echo ""
-	@echo "[3/5] Waiting for database initialization (60 seconds)..."
-	@sleep 60
-	@echo "✓ Database ready"
+	@echo "[3/4] Waiting for services to be healthy..."
+	@timeout=60; \
+	while [ $$timeout -gt 0 ]; do \
+		if docker compose -f $(COMPOSE_FILE) ps db | grep -q "healthy"; then \
+			echo "✓ Database is healthy"; \
+			break; \
+		fi; \
+		sleep 2; \
+		timeout=$$((timeout - 2)); \
+	done
 	@echo ""
-	@echo "[4/5] Starting backend and celery..."
+	@echo "[4/4] Starting backend, celery and frontend..."
 	@docker compose -f $(COMPOSE_FILE) up -d backend celery
-	@echo "✓ Backend and celery started"
-	@echo ""
-	@echo "[5/5] Starting frontend..."
-	@sleep 30
+	@echo "Waiting for backend to be healthy..."
+	@timeout=120; \
+	while [ $$timeout -gt 0 ]; do \
+		if docker compose -f $(COMPOSE_FILE) ps backend | grep -q "healthy"; then \
+			echo "✓ Backend is healthy"; \
+			break; \
+		fi; \
+		if docker compose -f $(COMPOSE_FILE) ps backend | grep -q "unhealthy"; then \
+			echo "⚠ Backend is unhealthy, checking logs..."; \
+			docker compose -f $(COMPOSE_FILE) logs backend --tail=20; \
+			exit 1; \
+		fi; \
+		sleep 3; \
+		timeout=$$((timeout - 3)); \
+	done
 	@docker compose -f $(COMPOSE_FILE) up -d frontend
-	@sleep 5
 	@echo ""
 	@echo "========================================="
 	@echo " ✓ Setup completed successfully!"
 	@echo "========================================="
 	@echo ""
 	@echo "Services are available at:"
-	@echo "  🌐 Frontend:     http://localhost:8080"
-	@echo "  🔌 Backend API:  http://localhost:8000/api/v1/"
-	@echo "  👤 Admin Panel:  http://localhost:8000/admin"
+	@echo "  Frontend:     http://localhost:8080"
+	@echo "  Backend API:  http://localhost:8000/api/v1/"
+	@echo "  Admin Panel:  http://localhost:8000/admin"
 	@echo ""
 	@echo "Default credentials:"
-	@echo "  📧 Email:    admin@admin.ru"
-	@echo "  🔑 Password: admin777"
+	@echo "  Email:    admin@admin.ru"
+	@echo "  Password: admin777"
 	@echo ""
 	@echo "Useful commands:"
 	@echo "  make logs    - View all logs"
